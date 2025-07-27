@@ -13,10 +13,13 @@ An 8-month project-based data analytics program with a focus on the Project Mana
 - **mini-projects/**: Smaller, individual tasks designed to apply new skills.
 - **capstones/**: Final comprehensive projects demonstrating mastery of skills.
 - **homework/**: Practice exercises and homework from bootcamp.
+- **project-management-dashboard/**: Visualizing learning and progress.
+- **prompt-engineering/**: As I work with various AI's on this undertaking, I'd like to track my progress.
+
 
 ## Goal
 
-This bootcamp is designed to build the skills necessary to become a proficient data analyst in the **project management** field. The goal is to analyze, visualize, and derive actionable insights from project data across various domains such as construction, compliance, and business operations.
+This bootcamp is designed to build the skills necessary to become a proficient data analyst in the **Project Management** field. The goal is to analyze, visualize, and derive actionable insights from project data across various domains such as construction, compliance, and business operations.
 
 ## Technologies Used
 
