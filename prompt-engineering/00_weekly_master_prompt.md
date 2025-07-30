@@ -53,10 +53,9 @@ Absolutely! Here's a **comprehensive, strategic prompt** you can use to keep you
 >
 > ### 🎓 Additional Instructions
 >
-> * Assume I have 1 hour each weekday and 4 hours Sat/Sun
+> * Assume I have 0.5 hour each weekday and 4 hours Sat/Sun
 > * Always format deliverables in Markdown so I can commit to GitHub
 > * Make sure everything connects back to **project management analytics** or my career transition goals
->
 > Let’s use this prompt weekly to keep me focused, motivated, and strategic.
 
 ---
