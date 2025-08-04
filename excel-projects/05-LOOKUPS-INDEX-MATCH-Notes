@@ -1,0 +1,190 @@
+
+Great question. Below is a comprehensive, **instructor-quality lesson guide** on LOOKUP functions in Excel. It’s designed for learners like you — clear, structured, with visuals, syntax explanations, comparisons, examples, and when to use each.
+
+---
+
+# 📘 Excel Lookup Functions: Instructor Notes
+
+**Lesson Topic**: VLOOKUP, XLOOKUP, INDEX/MATCH, and Column References
+**Level**: Beginner to Intermediate
+**Objective**: By the end of this lesson, you’ll be able to choose and apply the best lookup method based on the structure of your data.
+
+---
+
+## 🧠 Why Learn Lookup Functions?
+
+Lookup functions help you **pull data from another part of your spreadsheet** without manually searching for it. These are essential for:
+
+* Merging datasets
+* Creating dashboards
+* Automating reports
+* Data cleaning and validation
+
+---
+
+## 🔍 Overview of Lookup Options
+
+| Function      | Use For                                        | Direction     | Case Sensitive | Dynamic to Structure Changes | Notes                      |
+| ------------- | ---------------------------------------------- | ------------- | -------------- | ---------------------------- | -------------------------- |
+| `VLOOKUP`     | Simple vertical lookups                        | Right only    | ❌              | ❌ (Breaks if columns shift)  | Old school, limited        |
+| `XLOOKUP`     | Flexible, modern lookups (vertical/horizontal) | Left or Right | ❌              | ✅                            | Best for most needs        |
+| `INDEX/MATCH` | Dynamic, powerful alternative to VLOOKUP       | Any direction | ❌              | ✅                            | More flexible than VLOOKUP |
+| `EXACT`       | Compare values (case-sensitive)                | —             | ✅              | —                            | Used inside formulas       |
+
+---
+
+## 📌 1. `VLOOKUP`
+
+### ✅ Syntax:
+
+```excel
+=VLOOKUP(lookup_value, table_array, col_index_num, [range_lookup])
+```
+
+### 💡 Example:
+
+```excel
+=VLOOKUP("M115", A2:E100, 3, FALSE)
+```
+
+**This finds M115 in the first column of A2\:E100 and returns the value from the 3rd column.**
+
+### ⚠️ Limitations:
+
+* Can only search **to the right**
+* Breaks if columns are inserted
+* Doesn’t work well with dynamic tables
+
+---
+
+## 📌 2. `XLOOKUP` (Recommended)
+
+### ✅ Syntax:
+
+```excel
+=XLOOKUP(lookup_value, lookup_array, return_array, [if_not_found], [match_mode], [search_mode])
+```
+
+### 💡 Example:
+
+```excel
+=XLOOKUP("M115", DATASET[SAI File No], DATASET[WA Status], "Not Found")
+```
+
+**This finds “M115” in the `SAI File No` column and returns the matching `WA Status`.**
+
+### 🌟 Pros:
+
+* Works left or right
+* Cleaner syntax
+* Optional error handling
+* Replaces both VLOOKUP and HLOOKUP
+
+---
+
+## 📌 3. `INDEX` + `MATCH`
+
+### ✅ Syntax:
+
+```excel
+=INDEX(return_range, MATCH(lookup_value, lookup_array, 0))
+```
+
+### 💡 Example:
+
+```excel
+=INDEX(DATASET[WA Status], MATCH("M115", DATASET[SAI File No], 0))
+```
+
+**MATCH** returns the position (row number), and **INDEX** uses it to return the corresponding value.
+
+### 🧠 Why Use This?
+
+* Doesn’t break if columns move
+* Lets you look left
+* Works well with dynamic structured tables
+
+---
+
+## 📌 4. `EXACT`
+
+### ✅ Syntax:
+
+```excel
+=EXACT(text1, text2)
+```
+
+### 💡 Example:
+
+```excel
+=EXACT(A2, B2)
+```
+
+Returns `TRUE` if the two text values are **exactly** the same, **case-sensitive**.
+
+---
+
+## ✅ Visual Summary Chart
+
+```text
+    | A           | B             | C              | D            |
+----|-------------|---------------|----------------|--------------|
+ 1  | SAI File No | Project Name  | WA Status      | PM Name      |
+ 2  | M115        | NYCHA PS 123  | Open           | Joe Smith    |
+ 3  | 35Q         | SCA Roof Job  | Closed         | Linda Park   |
+```
+
+* To find the WA Status for `35Q` using `XLOOKUP`:
+
+```excel
+=XLOOKUP("35Q", A2:A100, C2:C100)
+```
+
+* Using `INDEX/MATCH`:
+
+```excel
+=INDEX(C2:C100, MATCH("35Q", A2:A100, 0))
+```
+
+---
+
+## 💬 When to Use What?
+
+| Situation                                                    | Use             |
+| ------------------------------------------------------------ | --------------- |
+| You’re doing a **simple lookup**, data won’t move            | `VLOOKUP`       |
+| You want more **flexibility** or data may change             | `XLOOKUP`       |
+| You need to **look left** or pull data based on **position** | `INDEX + MATCH` |
+| You need **case-sensitive** comparison                       | `EXACT`         |
+
+---
+
+## 🛠️ Pros & Cons
+
+| Function      | Pros                     | Cons                                        |
+| ------------- | ------------------------ | ------------------------------------------- |
+| `VLOOKUP`     | Easy to use              | Can’t look left, breaks with column changes |
+| `XLOOKUP`     | Flexible, dynamic, safer | Not available in Excel 2016 or older        |
+| `INDEX/MATCH` | Very dynamic, fast       | Slightly more complex syntax                |
+| `EXACT`       | Great for validation     | Only works on text                          |
+
+---
+
+## 🧪 Practice Challenge
+
+> **Challenge:** In your `Monthly Status` dataset, return the `WA Status` for job number `M115` using both `XLOOKUP` and `INDEX/MATCH`.
+
+> **Bonus:** Use `EXACT` to check whether the status is *exactly* equal to “Open”.
+
+---
+
+## 📘 Summary Key Points
+
+* Know your data layout before choosing a lookup method.
+* Use **structured references** (`Table[Column Name]`) where possible.
+* Avoid using whole-column references (like `A:A`) with `COUNTIF`, `XLOOKUP`, etc.
+* Combine `EXACT`, `IF`, and `XLOOKUP` for powerful logic formulas.
+
+---
+
+Would you like this as a downloadable `.md` or `.xlsx` version to add to your **master bootcamp notes**?
