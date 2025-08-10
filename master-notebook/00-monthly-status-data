@@ -1,0 +1,72 @@
+
+### My Data - Monthly Status Report
+
+| SAI Job No | Contract #  | BID  | School Name             | WA #     | Service ID | Project Type | Primary Hygienist | Service Name                  | WA Type | WA Status | Initiation Date | Estimated Cost | Actual Start | Actual Completion | RFP No | RFP Date  | Amount Invoiced | Amount Received | Amount Outstanding | CHECK NO. | Check Date | Paid/Unpaid | Notes                |
+|------------|-------------|------|--------------------------|----------|------------|---------------|--------------------|-------------------------------|---------|-----------|------------------|----------------|--------------|-------------------|--------|-----------|------------------|------------------|---------------------|-----------|------------|-------------|----------------------|
+| 24S-108    | C000015869  | K027 | P.S. 27 - BROOKLYN       | 1314173  | 93452      | CIP           | Bracamonte, Jesus  | Special Program               | Initial | Closed    | 09-30-2024       | $4,000.00      | 11-22-2024   | 11-23-2024        | 245    | 07/28/25  | $3,552.53        | $0.00           | ($3,552.53)         |           |            | UNPAID      |                      |
+|            | C000015869  | K043 | I.S. 98 - BROOKLYN       | 1320962  | 93925      | CIP           | Bracamonte, Jesus  | Special Program               | Initial | NEW       | 11-13-2024       | $4,100.00      |              |                   |        |           | 0.00             |                  |                     |           |            | UNPAID      |                      |
+| 24S-004    | C000015869  | K050 | J.H.S. 50 - BROOKLYN     | 1219382  | 90587      | CIP           | Bracamonte, Jesus  | LAP Construction Phase Service | Initial | NEW       | 02-16-2024       | $18,700.00     |              |                   |        |           | 0.00             |                  |                     |           |            | UNPAID      |                      |
+| 22S-075    | C000015869  | K051 | I.S. 51 - BROOKLYN       | 1154680  | 86753      | CIP           | Scott, Richard     | PO 18 Asbestos Service        | Initial | Closed    | 12-05-2022       | $575.00        | 07-14-2023   | 07-21-2023        | 197    | 06/16/25  | $12,748.05       | $0.00           | ($12,748.05)        |           |            | UNPAID      |                      |
+| 24S-072    | C000015869  | K051 | I.S. 51 - BROOKLYN       | 1302806  | 92774      | CIP           | Bracamonte, Jesus  | Special Program               | Initial | Closed    | 08-04-2024       | $4,000.00      | 08-20-2024   | 08-21-2024        | 156    | 05/06/25  | $2,236.93        | $2,236.93       | $0.00                | 854005    | 06/12/2025 | PAID        | CHECK 24S-072 K051   |
+| 23S-016    | C000015869  | K054 | P.S. 54 - BROOKLYN       | 1166957  | 87386      | CIP           | Walsh, Joseph      | PO 18 Asbestos Service        | Initial | Closed    | 02-10-2023       | $575.00        | 03-23-2023   | 03-25-2023        | 28     | 07/11/23  | $6,616.23        | $6,616.23       | $0.00                | 799845    | 07/19/2023 | PAID        |                      |
+| 22S-055    | C000015869  | K055 | I.S. 55 - BROOKLYN       | 1138365  | 86018      | CIP           | Palermo, Albert    | PO 18 Asbestos Service        | RFA     | Closed    | 09-06-2022       | $19,775.00     | 09-20-2022   | 11-13-2022        | 15     | 06/21/22  | $27,095.76       | $27,095.76      | $0.00                | 807815    | 11/09/2023 | PAID        |                      |
+
+
+### Schema
+
+| Column Name          | Data Type   | Description                              |
+| -------------------- | ----------- | ---------------------------------------- |
+| `SAI Job No`         | Text        | Internal job identifier                  |
+| `Contract #`         | Text        | Contract identifier                      |
+| `BID`                | Text        | Borough identifier (e.g. K = Brooklyn)   |
+| `School Name`        | Text        | Name of school                           |
+| `WA #`               | Text        | Work Authorization number                |
+| `Service ID`         | Text        | Unique ID for the service provided       |
+| `Project Type`       | Text        | Type of project (e.g., CIP, RFA)         |
+| `Primary Hygienist`  | Text        | Lead hygienist assigned                  |
+| `Service Name`       | Text        | Description of the work or service       |
+| `WA Type`            | Text        | Authorization type (e.g., Initial, RFA)  |
+| `WA Status`          | Text        | Work authorization status (e.g., Closed) |
+| `Initiation Date`    | Date        | Date WA was initiated                    |
+| `Estimated Cost`     | Currency    | Budget estimate                          |
+| `Actual Start`       | Date        | Actual start of the work                 |
+| `Actual Completion`  | Date        | Actual completion of work                |
+| `RFP No`             | Text/Number | Related Request for Proposal #           |
+| `RFP Date`           | Date        | When the RFP was issued                  |
+| `Amount Invoiced`    | Currency    | Amount billed                            |
+| `Amount Received`    | Currency    | Payment received                         |
+| `Amount Outstanding` | Currency    | Balance remaining                        |
+| `CHECK NO.`          | Text/Number | Payment check number                     |
+| `Check Date`         | Date        | When payment was issued                  |
+| `Paid/Unpaid`        | Text        | Payment status                           |
+| `Notes`              | Text        | Misc. notes or comments                  |
+
+
+### Data Dictionary
+
+| Column               | Description                  | Example            | Cleaning Ideas                                                     |
+| -------------------- | ---------------------------- | ------------------ | ------------------------------------------------------------------ |
+| `SAI Job No`         | Internal job tracking number | 24S-108            | Ensure consistent formatting (e.g., add missing values, uppercase) |
+| `Contract #`         | Contract assigned to the job | C000015869         | Standardize, remove duplicates                                     |
+| `BID`                | Building ID                  | K027               | Ensure consistent length/format                                    |
+| `School Name`        | School location name         | P.S. 27 - BROOKLYN | Remove extra spaces or non-standard chars                          |
+| `WA #`               | Work Authorization number    | 1314173            | Remove non-numeric chars if meant to be numeric                    |
+| `Service ID`         | Internal service identifier  | 93452              | Same as above                                                      |
+| `Project Type`       | Type of project (CIP, RFA)   | CIP                | Check for typos or inconsistent casing                             |
+| `Primary Hygienist`  | Assigned person              | Anderson, William  | Standardize naming format (Last, First)                            |
+| `Service Name`       | Service title                | Special Program    | Group into categories if needed                                    |
+| `WA Type`            | Work Auth. Type              | Initial            | Clean spelling, standardize values                                 |
+| `WA Status`          | Status of WA                 | Closed             | Same as above                                                      |
+| `Initiation Date`    | Date WA started              | 09-30-2024         | Convert to proper date format                                      |
+| `Estimated Cost`     | Project budget               | \$4,000.00         | Remove "\$", commas, convert to float                              |
+| `Actual Start`       | Work start date              | 11-22-2024         | Convert to date                                                    |
+| `Actual Completion`  | Work end date                | 11-23-2024         | Same                                                               |
+| `RFP No`             | RFP identifier               | 245                | Fill blanks or standardize as N/A                                  |
+| `RFP Date`           | RFP issue date               | 07/28/25           | Convert to consistent date                                         |
+| `Amount Invoiced`    | What was billed              | \$3,552.53         | Clean like "Estimated Cost"                                        |
+| `Amount Received`    | Paid amount                  | \$0.00             | Convert to float                                                   |
+| `Amount Outstanding` | Balance                      | (\$3,552.53)       | Remove parentheses, convert to negative number                     |
+| `CHECK NO.`          | Check number                 | 854005             | Clean blank/missing data                                           |
+| `Check Date`         | Date check issued            | 06/12/2025         | Convert to consistent date                                         |
+| `Paid/Unpaid`        | Payment status               | PAID / UNPAID      | Standardize categories                                             |
+| `Notes`              | Comments                     | CHECK 24S-072 K051 | Strip extra spaces                                                 |
