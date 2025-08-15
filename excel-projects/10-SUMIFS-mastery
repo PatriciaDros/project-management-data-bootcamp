@@ -1,0 +1,119 @@
+
+Perfect — here’s your **SUMIFS Mastery** lesson in a way you can drop into GitHub, continue your bootcamp flow, and reinforce the connection to your real project data.
+
+---
+
+## 📓 Bootcamp Lesson — SUMIFS Mastery
+
+*(Markdown-ready for GitHub)*
+
+```markdown
+# SUMIFS Mastery — Project Management Data Analytics Bootcamp
+
+## 1. Overview
+In the last lesson, we mastered `COUNTIFS` to count records with multiple conditions.  
+Now, we move to `SUMIFS`, which **adds up values** in a range based on one or more criteria.  
+Think of it as "COUNTIFS + SUM" rolled into one.
+
+---
+
+## 2. Syntax
+
+```
+
+\=SUMIFS(sum\_range, criteria\_range1, criteria1, \[criteria\_range2, criteria2], ...)
+
+```
+
+- **sum_range** → the numbers you want to add (e.g., Costs, Hours)
+- **criteria_range1** → the column where you’re checking for your first condition
+- **criteria1** → the condition for that column
+- You can add **more criteria pairs** for multiple conditions
+
+---
+
+## 3. Examples (Project Management Context)
+
+### Example 1 — Total Cost for All "Started" Jobs
+```
+
+\=SUMIFS(Costs, Status, "Started")
+
+```
+
+### Example 2 — Total Cost for "Started" Jobs by Alice
+```
+
+\=SUMIFS(Costs, Status, "Started", Hygienist, "Alice")
+
+```
+
+### Example 3 — Total Paid Amounts for March 2025
+```
+
+\=SUMIFS(Amounts, Paid\_Unpaid, "Paid", Date, ">=3/1/2025", Date, "<=3/31/2025")
+
+```
+
+---
+
+## 4. Common Mistakes to Avoid
+1. **Criteria ranges must be the same size as sum_range** — mismatched ranges = error.
+2. **Dates need quotes** in criteria, or use cell references with `&`.
+3. **Text criteria are in quotes** (`"Started"`) unless referencing a cell.
+4. **Multiple conditions** use additional criteria pairs, *not* `AND`.
+
+---
+
+## 5. SUMIFS Mastery Drill
+
+### Dataset
+| Job ID | Hygienist | Status     | Cost  | Paid/Unpaid | Date       |
+|--------|-----------|-----------|-------|-------------|------------|
+| 101    | Alice     | Started   | 500   | Paid        | 3/1/2025   |
+| 102    | Bob       | Completed | 750   | Paid        | 3/5/2025   |
+| 103    | Alice     | Started   | 300   | Unpaid      | 3/7/2025   |
+| 104    | Charlie   | Completed | 600   | Paid        | 4/1/2025   |
+| 105    | Alice     | Completed | 900   | Paid        | 4/3/2025   |
+| 106    | Bob       | Started   | 200   | Paid        | 4/5/2025   |
+
+---
+
+### Questions
+1. **Total cost of all "Started" jobs**  
+2. **Total cost of all "Completed" jobs handled by Alice**  
+3. **Total cost of all "Paid" jobs in March 2025**  
+4. **Total unpaid cost for Alice's jobs**  
+5. **Total cost for Bob's "Started" jobs in April 2025**  
+6. **Total cost for all jobs in March and April 2025 combined**
+
+---
+
+## 6. Question Decoding Cheat Sheet (from COUNTIFS)
+- **"Total cost"** → You’re summing numbers, so `SUMIFS`.
+- **"By person"** → Hygienist criteria.
+- **"By status"** → Status column criteria.
+- **"By date"** → Use >= and <= criteria with a date range.
+- **"Paid/Unpaid"** → Paid/Unpaid column criteria.
+
+---
+
+## 7. Homework
+1. Answer the drill questions without looking up formulas.
+2. Check answers by comparing your SUMIFS results with manual filtered totals.
+3. Document the formulas you wrote and push them to GitHub.
+
+---
+```
+
+---
+
+Status	    Cost	Hygienist	Paid
+Started	    650	    Alice	    Yes
+Started	    500	    Bob	        No
+Completed	800	    Alice	    Yes
+Started	    750	    Charlie	    No
+Completed	600	    Bob	        Yes
+Started	    450	    Alice	    No
+Completed	900	    Charlie	    Yes
+
